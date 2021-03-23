@@ -1,11 +1,37 @@
-<!DOCTYPE html>
 <html>
     <head>
         <title>
-            <%= title %>
+            <%= locals.title%>
+            
         </title>
+        <link rel="stylesheet" href="./css/home.css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     </head>
     <body>
-       <h1>Hii Rahul Get this server view</h1> 
+        
+            
+        <h1 id="page-heading"><i class="fas fa-address-book"></i>
+            MyContactList</h1>
+        <center>    
+        <div>
+            <ul>
+                   
+                <% for (let i of contact_list) { %> 
+                    
+                    <li>
+                        <p><%= i.name %></p>
+                        <p><%= i.phone %></p>
+                    </li>
+                    
+                <% } %>
+            </ul>
+        </div>
+        </center>
+        <form action="/create-contact" method="POST">
+            <input type="text" name="name" placeholder="Enter name" required>
+            <input type="number" name="phone" placeholder="Enter phone" required>
+            <button type="submit">Add contact</button>
+        </form>
+<script src="/js/home.js"></script>
     </body>
 </html>

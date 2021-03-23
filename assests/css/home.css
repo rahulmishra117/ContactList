@@ -1,0 +1,39 @@
+body{
+    text-align: center;
+}
+ul{
+    list-style-type:none;
+    
+}
+h1{
+    font-family: sans-serif;
+}
+
+#page-heading{
+    text-align: center;
+}
+li{
+    background-color: rgb(4, 0, 255);
+    max-width: 40%;
+    border-radius: 20%;
+   padding: 1px 2px 3px 3px;
+}
+li:hover{
+    color: red;
+}
+li > p{
+    color: aliceblue;
+    font-family:sans-serif;
+    font-size: bold;
+    display: inline-block;
+    border: .5px solid rgb(255, 4, 4);
+}
+input{
+    /* border: none; */
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: blue
+}
+button{
+    background-color: rgb(221, 221, 221);
+}
