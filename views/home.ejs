@@ -4,6 +4,7 @@
             <%= locals.title%>
             
         </title>
+        <link rel="shortcut icon" type="image/jpg" href="https://dm0qx8t0i9gc9.cloudfront.net/watermarks/image/rDtN98Qoishumwih/contact-list-simplicity-icon_Gyh3TaUd_SB_PM.jpg"/>
         <link rel="stylesheet" href="./css/home.css">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     </head>
@@ -18,9 +19,16 @@
                    
                 <% for (let i of contact_list) { %> 
                     
-                    <li>
+                    <li class="contact">
+                        <div class="details">
                         <p><%= i.name %></p>
                         <p><%= i.phone %></p>
+                    </div>
+                    <div class="delete-button">
+                        <a href="/delete-contact/?phone=<%= i.phone %>">
+                        <i class="fas fa-times fa-2x"></i>
+                        </a>
+                    </div>
                     </li>
                     
                 <% } %>
