@@ -8,6 +8,6 @@ Using Mongo and mongoose as db .
 
 Here I add the Screenshot of the Contact List-->>>
 <p align="center">
-  <img src="Screenshot(531).png" width="350" title="hover text">
+  <img src="EXPRESSJS\Contactlist\Screenshot(531).png" width="350" title="hover text">
   
 </p>
