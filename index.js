@@ -8,6 +8,8 @@ const port=8000;
 
 const db=require('./config/mongoose');
 
+const Contact=require('./models/contact');
+
 const app=express();
 
 app.set('view engine','ejs');
@@ -33,13 +35,19 @@ var contactlist=[
 ]
 app.get('/',function(request,response)
 {
-   
-   return response.render('home',
+   Contact.find({},function(err,contacts){
+       if(err){
+           console.log('error is find in the db');
+           return ;
+       }
+       return response.render('home',
    {
        title:"ContacList",
-       contact_list:contactlist
+       contact_list:contacts
 
 });
+   });
+   
 });
 app.get('/practice',function(request,response){
     return response.render('practice',{
@@ -49,23 +57,42 @@ app.get('/practice',function(request,response){
 });
 
 app.post('/create-contact',function(request,response){
-        contactlist.push({
-            name:request.body.name,
-            phone:request.body.phone
+        // contactlist.push({
+        //     name:request.body.name,
+        //     phone:request.body.phone
+        // });
+        Contact.create({
+            name : request.body.name,
+            phone: request.body.phone
+        },function(err,newContact){
+            if(err){
+                console.log('error is occured !!!!');
+                return ;
+            }
+
+            console.log('*********',newContact);
+            return response.redirect('back');
         });
-        return response.redirect('/');
+        // return response.redirect('/');
 });
 
 
 app.get('/delete-contact/',function(request,response){
-    console.log(request.query);
-    let phone=request.query.phone;
-    let constactIndex=contactlist.findIndex(contact => contact.phone==phone);
-    if(constactIndex!= -1){
-        contactlist.splice(constactIndex,1);
+    // console.log(request.query);
 
-    }
-    return response.redirect('back');
+    let id=request.query.id;
+    // let constactIndex=contactlist.findIndex(contact => contact.phone==phone);
+    Contact.findByIdAndDelete(id,function(err)
+    {
+        if(err){
+            console.log('error is occurs!!!!');
+            return ;
+        }
+        return response.redirect('back');
+    });
+    
+  
+    // return response.redirect('back');
 
 });
 
